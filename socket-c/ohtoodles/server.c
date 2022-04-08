@@ -31,7 +31,7 @@ int main(void){
 
 	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1){
 		perror("socket");
-		exit(-1);
+		exit(1);
 	}
 
 	localAddr.sin_family = AF_INET;
@@ -41,7 +41,7 @@ int main(void){
 	//Binding
 	if(bind(sockfd, (struct sockaddr*) &(localAddr), localAddrL) == -1){
 		perror("binding");
-		exit(-1);
+		exit(2);
 	}
 
 	//Listen
