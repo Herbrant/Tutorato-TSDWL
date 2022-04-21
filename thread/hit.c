@@ -1,11 +1,16 @@
+/* Una variabile intera x, inizializzata a 0, è condivisa tra 2 thread tA, tB. Ogni thread dispone di una variabile locale hit ed esegue le seguenti azioni:
+
+- attende un numero casuale di ms (N.B.: la chiamata usleep(n) attende per n microsecondi)
+- se la variabile condivisa x > 500, allora scrive su stdout il valore di hit e termina la propria esecuzione
+- altrimenti, incrementa x, incrementa la variabile locale hit e ricomincia da (1)
+
+Il programma termina quando tutti i thread hanno terminato la propria esecuzione.
+Nel codice, proteggere opportunamente la variabile x dagli accessi concorrenti. */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-#include <ctype.h>
-#include <time.h>
-#include <sys/types.h>
-#include <sys/syscall.h>
 
 
 int x = 0;
