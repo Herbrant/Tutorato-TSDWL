@@ -1,10 +1,10 @@
 public class App {
 	public static void main(String[] args) {
-		MyThread th1 = new MyThread(    "Thread 1");     // refs th1, th2
-		MyThread th2 = new MyThread("\t\t\t\tThread 2"); // for future use
+		MyThread th1 = new MyThread("Thread 1");
+		MyThread th2 = new MyThread("\t\t\t\tThread 2");
 		th1.start();
 		th2.start();
-		try {	// join() may throw InterruptedException
+		try {
 			th1.join();
 			th2.join();
 			System.out.println("main: Thread terminati\n");

@@ -1,8 +1,8 @@
 public class MyThread extends Thread {
     public MyThread(String str) {
-        super(str);
-//		commentando super(str), prende un nome di default        
+        super(str);       
     }
+    
     public void run() {
         for (int i = 0; i < 10; i++) {
             System.out.println(getName() + "@ iter: " + i);

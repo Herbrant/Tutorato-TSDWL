@@ -1,19 +1,19 @@
-public class App {
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
-	static SharedArea shrd = new SharedArea();  // oppure var locale
+public class App {
+	static BlockingQueue<Double> blockingQueue = new LinkedBlockingDeque<>(5);
 
 	public static void main(String[] args) {
-//		SharedArea Shrd = new SharedArea();
+		Thread p = new Thread(new Producer(blockingQueue));
+		Thread c = new Thread(new Consumer(blockingQueue));
 
-		MyWriter th1 = new MyWriter("Thread", 100, shrd);
-		MyWriter th2 = new MyWriter("\t\t\t\t Thread lento", 2500, shrd);
-		th1.start();
-		th2.start();
+		p.start();
+		c.start();
         
 		try {
-			th1.join();
-			th2.join();
-			System.out.println("Thread terminati\n");
+			p.join();
+			c.join();
 		}
 		catch (InterruptedException e) { }
 	}
