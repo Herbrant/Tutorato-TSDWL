@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else
         $filename = './uscite.json';
     
-    if (filesize($filename) > 0) {
+    if (file_exists($filename) && filesize($filename) > 0) {
         $jsonString = file_get_contents($filename);
         $entries = json_decode($jsonString, true);
         $entries[] = $entry;

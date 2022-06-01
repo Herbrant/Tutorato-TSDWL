@@ -1,13 +1,9 @@
 <html>
 <?php
-$f = fopen('entrate.json', 'r');
-$entrate = fread($f, filesize('entrate.json'));
-fclose($f);
+$entrate = file_get_contents('entrate.json');
 $entrate = json_decode($entrate, true);
 
-$f = fopen('uscite.json', 'r');
-$uscite = fread($f, filesize('uscite.json'));
-fclose($f);
+$uscite = file_get_contents('uscite.json');
 $uscite = json_decode($uscite, true);
 ?>
 
